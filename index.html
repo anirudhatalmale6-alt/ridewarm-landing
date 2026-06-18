@@ -265,9 +265,9 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1200px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1300px;
   margin: 0 auto;
   opacity: 0;
   transform: translateY(30px);
@@ -447,9 +447,9 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  max-width: 1300px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -495,6 +495,13 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 .card-scooter { background: linear-gradient(160deg, #D4622B, #FF8C5A); color: var(--warm-white); }
 .card-scooter::before { background: linear-gradient(160deg, #B8521F, #D4622B); }
 .card-scooter:hover::before { opacity: 1; }
+
+.card-villa { background: linear-gradient(160deg, #C0392B, #E74C3C); color: var(--warm-white); }
+.card-villa::before { background: linear-gradient(160deg, #A93226, #C0392B); }
+.card-villa:hover::before { opacity: 1; }
+.card-villa .service-icon { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.15); }
+.card-villa .service-icon svg { fill: var(--warm-white); }
+.card-villa .feature-check { background: rgba(255,255,255,0.2); }
 
 .service-icon {
   position: relative;
@@ -991,8 +998,8 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
-  .top-cards { grid-template-columns: 1fr; max-width: 420px; gap: 16px; }
-  .services-grid { grid-template-columns: 1fr; max-width: 520px; }
+  .top-cards { grid-template-columns: repeat(2, 1fr); max-width: 700px; gap: 16px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); max-width: 700px; }
   .why-grid { grid-template-columns: 1fr; gap: 48px; }
   .steps-grid { grid-template-columns: 1fr; gap: 40px; max-width: 360px; }
   .steps-grid::before { display: none; }
@@ -1051,7 +1058,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
       Your adventure in Tonga starts here
     </div>
     <h1>Explore Tonga.<br>Your way, <em>every day.</em></h1>
-    <p class="hero-sub">Airport transfers, car rentals, and scooters in Nuku'alofa. Everything you need to move freely across the Kingdom of Tonga.</p>
+    <p class="hero-sub">Airport transfers, car rentals, scooters, and accommodation in Nuku'alofa. Everything you need to explore the Kingdom of Tonga.</p>
   </div>
 
   <!-- THREE COLUMNS AT THE TOP -->
@@ -1099,6 +1106,21 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
         <span class="price-alt">USD 20</span>
       </div>
       <p class="top-card-detail">Per day, 24 hours</p>
+    </div>
+
+    <!-- 4. Accommodation -->
+    <div class="top-card">
+      <div class="top-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>
+      </div>
+      <h3>KentiGate Villa</h3>
+      <p class="top-card-desc">Amazing rooms in Nuku'alofa. Comfortable, clean, and welcoming.</p>
+      <div class="top-card-price">
+        <span class="price-big">TOP 130</span>
+        <span class="price-slash">/</span>
+        <span class="price-alt">USD 54</span>
+      </div>
+      <p class="top-card-detail">Per night</p>
     </div>
   </div>
 
@@ -1161,6 +1183,21 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
         <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Helmet provided free</li>
         <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Walk-in or reserve online</li>
         <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Valid ID required</li>
+      </ul>
+    </div>
+
+    <div class="service-card card-villa">
+      <span class="service-number">04</span>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>
+      </div>
+      <h3>KentiGate Villa</h3>
+      <p>Amazing rooms right in the heart of Nuku'alofa. Comfortable, clean, and the perfect base for exploring Tonga.</p>
+      <ul class="service-features">
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>TOP 130 / USD 54 per night</li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Central Nuku'alofa location</li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Clean & comfortable</li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Book via WhatsApp</li>
       </ul>
     </div>
   </div>
@@ -1264,6 +1301,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
         <li><a href="#services">Airport Transfer</a></li>
         <li><a href="#services">Car Rental</a></li>
         <li><a href="#services">Scooter Rental</a></li>
+        <li><a href="#services">KentiGate Villa</a></li>
       </ul>
     </div>
     <div class="footer-links-group">
