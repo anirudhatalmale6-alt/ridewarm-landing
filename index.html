@@ -21,7 +21,6 @@
   --warm-white: #FFF8F2;
   --warm-cream: #FFF1E6;
   --burnt-orange: #D4622B;
-  --teal: #2ABFBF;
 }
 
 html { scroll-behavior: smooth; }
@@ -36,7 +35,6 @@ body {
 
 h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 
-/* ─── GRAIN OVERLAY ─── */
 .grain {
   position: fixed;
   inset: 0;
@@ -48,46 +46,14 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   background-size: 200px;
 }
 
-/* ─── HERO ─── */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-  background: linear-gradient(135deg, #B82E10 0%, #E8451C 25%, #FF6B4A 50%, #F5A623 80%, #FFCC02 100%);
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 80%, rgba(255,107,74,0.6) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(255,204,2,0.4) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  background: var(--warm-white);
-  clip-path: polygon(0 60%, 100% 0, 100% 100%, 0 100%);
-}
-
-/* Nav */
+/* ─── NAV ─── */
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 24px 48px;
+  padding: 20px 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -95,9 +61,9 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 }
 
 .nav.scrolled {
-  background: rgba(184, 46, 16, 0.92);
+  background: rgba(184, 46, 16, 0.95);
   backdrop-filter: blur(20px);
-  padding: 16px 48px;
+  padding: 14px 48px;
   box-shadow: 0 4px 30px rgba(0,0,0,0.15);
 }
 
@@ -107,13 +73,9 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   font-size: 1.6rem;
   color: var(--warm-white);
   text-decoration: none;
-  letter-spacing: -0.5px;
 }
 
-.nav-logo em {
-  font-style: normal;
-  color: var(--sunflower);
-}
+.nav-logo em { font-style: normal; color: var(--sunflower); }
 
 .nav-logo span {
   display: inline-block;
@@ -133,7 +95,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 
 .nav-links {
   display: flex;
-  gap: 36px;
+  gap: 32px;
   list-style: none;
 }
 
@@ -142,7 +104,6 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
-  letter-spacing: 0.3px;
   transition: color 0.3s;
   position: relative;
 }
@@ -161,14 +122,90 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 .nav-links a:hover { color: var(--warm-white); }
 .nav-links a:hover::after { width: 100%; }
 
-/* Hero content */
-.hero-content {
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--warm-white);
+  border-radius: 2px;
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #B82E10 0%, #E8451C 25%, #FF6B4A 50%, #F5A623 80%, #FFCC02 100%);
+  padding: 120px 48px 80px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 80%, rgba(255,107,74,0.5) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(255,204,2,0.35) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.float-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+}
+
+.float-shape:nth-child(1) {
+  width: 350px; height: 350px;
+  background: var(--sunflower);
+  top: -80px; right: -40px;
+  animation: float1 12s ease-in-out infinite;
+}
+
+.float-shape:nth-child(2) {
+  width: 200px; height: 200px;
+  background: var(--peach);
+  bottom: 10%; left: 5%;
+  animation: float2 10s ease-in-out infinite;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, 15px) scale(1.05); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(15px, -20px); }
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-top {
   position: relative;
   z-index: 2;
-  padding: 140px 48px 160px;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 56px;
 }
 
 .hero-tag {
@@ -183,7 +220,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--warm-white);
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeUp 0.8s 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -197,147 +234,180 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 }
 
 .hero h1 {
-  font-size: clamp(3.2rem, 8vw, 7.5rem);
+  font-size: clamp(2.8rem, 6.5vw, 5.5rem);
   font-weight: 800;
   color: var(--warm-white);
   line-height: 0.95;
-  letter-spacing: -3px;
-  max-width: 900px;
+  letter-spacing: -2px;
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(30px);
   animation: fadeUp 1s 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .hero h1 em {
   font-style: italic;
   color: var(--sunflower);
-  position: relative;
 }
 
 .hero-sub {
-  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
   color: rgba(255,248,242,0.8);
-  max-width: 520px;
-  margin-top: 28px;
+  margin-top: 20px;
   line-height: 1.7;
   font-weight: 300;
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(20px);
   animation: fadeUp 0.9s 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.hero-ctas {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 40px;
+/* ─── TOP 3 COLUMNS ─── */
+.top-cards {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeUp 0.9s 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: fadeUp 1s 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.hero-cta {
+.top-card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 24px;
+  padding: 36px 32px;
+  text-align: center;
+  color: var(--warm-white);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: default;
+}
+
+.top-card:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.top-card-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.top-card-icon svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--warm-white);
+}
+
+.top-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin-bottom: 8px;
+}
+
+.top-card-desc {
+  font-size: 0.92rem;
+  opacity: 0.75;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.top-card-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  background: rgba(255,255,255,0.15);
+  padding: 10px 24px;
+  border-radius: 40px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+}
+
+.top-card-price .price-big {
+  font-size: 1.6rem;
+  color: var(--sunflower);
+  letter-spacing: -0.5px;
+}
+
+.top-card-price .price-slash {
+  font-size: 1rem;
+  opacity: 0.5;
+  margin: 0 4px;
+}
+
+.top-card-price .price-alt {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+.top-card-price .price-unit {
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.7;
+  margin-left: 4px;
+}
+
+.top-card-detail {
+  margin-top: 12px;
+  font-size: 0.82rem;
+  opacity: 0.6;
+  font-weight: 500;
+}
+
+.hero-wa {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.9s 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-wa a {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 36px;
+  gap: 10px;
+  padding: 16px 40px;
   background: var(--charcoal);
   color: var(--warm-white);
   font-family: 'Syne', sans-serif;
   font-weight: 700;
   font-size: 1rem;
-  border: none;
   border-radius: 60px;
-  cursor: pointer;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.hero-cta:hover {
+.hero-wa a:hover {
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 12px 40px rgba(0,0,0,0.3);
 }
 
-.hero-cta svg { transition: transform 0.3s; }
-.hero-cta:hover svg { transform: translateX(4px); }
+.hero-wa a svg { transition: transform 0.3s; }
+.hero-wa a:hover svg { transform: translateX(3px); }
 
-.hero-cta-secondary {
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.25);
-  color: var(--warm-white);
-}
-
-.hero-cta-secondary:hover {
-  background: rgba(255,255,255,0.25);
-}
-
-/* Floating shapes */
-.hero-shapes {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.float-shape {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.12;
-}
-
-.float-shape:nth-child(1) {
-  width: 400px; height: 400px;
-  background: var(--sunflower);
-  top: -100px; right: -50px;
-  animation: float1 12s ease-in-out infinite;
-}
-
-.float-shape:nth-child(2) {
-  width: 250px; height: 250px;
-  background: var(--peach);
-  bottom: 15%; right: 15%;
-  animation: float2 10s ease-in-out infinite;
-}
-
-.float-shape:nth-child(3) {
-  width: 150px; height: 150px;
-  background: var(--warm-white);
-  top: 30%; right: 30%;
-  animation: float3 14s ease-in-out infinite;
-}
-
-@keyframes float1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-30px, 20px) scale(1.05); }
-  66% { transform: translate(15px, -15px) scale(0.97); }
-}
-
-@keyframes float2 {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(-20px, -30px) rotate(10deg); }
-}
-
-@keyframes float3 {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(25px, 20px); }
-}
-
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ─── SERVICES ─── */
+/* ─── SERVICES DETAIL ─── */
 .services {
   background: var(--warm-white);
-  padding: 100px 48px 120px;
-  position: relative;
+  padding: 100px 48px 110px;
 }
 
 .services-header {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 80px;
+  margin: 0 auto 72px;
 }
 
 .section-tag {
@@ -370,7 +440,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 
 .services-header p {
   color: #7A6B62;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.7;
   margin-top: 16px;
 }
@@ -386,7 +456,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 .service-card {
   position: relative;
   border-radius: 24px;
-  padding: 48px 36px 44px;
+  padding: 44px 32px 40px;
   overflow: hidden;
   cursor: default;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -411,39 +481,31 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   inset: 0;
   z-index: 0;
   transition: opacity 0.5s;
+  opacity: 0;
 }
 
-.card-shuttle {
-  background: linear-gradient(160deg, #E8451C, #FF6B4A);
-  color: var(--warm-white);
-}
-.card-shuttle::before { background: linear-gradient(160deg, #D43A14, #E8451C); opacity: 0; }
+.card-shuttle { background: linear-gradient(160deg, #E8451C, #FF6B4A); color: var(--warm-white); }
+.card-shuttle::before { background: linear-gradient(160deg, #D43A14, #E8451C); }
 .card-shuttle:hover::before { opacity: 1; }
 
-.card-car {
-  background: linear-gradient(160deg, #F5A623, #FFCC02);
-  color: var(--charcoal);
-}
-.card-car::before { background: linear-gradient(160deg, #E09515, #F5A623); opacity: 0; }
+.card-car { background: linear-gradient(160deg, #F5A623, #FFCC02); color: var(--charcoal); }
+.card-car::before { background: linear-gradient(160deg, #E09515, #F5A623); }
 .card-car:hover::before { opacity: 1; }
 
-.card-scooter {
-  background: linear-gradient(160deg, #D4622B, #FF8C5A);
-  color: var(--warm-white);
-}
-.card-scooter::before { background: linear-gradient(160deg, #B8521F, #D4622B); opacity: 0; }
+.card-scooter { background: linear-gradient(160deg, #D4622B, #FF8C5A); color: var(--warm-white); }
+.card-scooter::before { background: linear-gradient(160deg, #B8521F, #D4622B); }
 .card-scooter:hover::before { opacity: 1; }
 
 .service-icon {
   position: relative;
   z-index: 1;
-  width: 72px;
-  height: 72px;
-  border-radius: 20px;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   background: rgba(255,255,255,0.2);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.15);
@@ -454,27 +516,17 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   border-color: rgba(26,18,16,0.08);
 }
 
-.service-icon svg {
-  width: 34px;
-  height: 34px;
-}
-
-.card-shuttle .service-icon svg,
-.card-scooter .service-icon svg {
-  fill: var(--warm-white);
-}
-
-.card-car .service-icon svg {
-  fill: var(--charcoal);
-}
+.service-icon svg { width: 30px; height: 30px; }
+.card-shuttle .service-icon svg, .card-scooter .service-icon svg { fill: var(--warm-white); }
+.card-car .service-icon svg { fill: var(--charcoal); }
 
 .service-number {
   position: absolute;
-  top: 24px;
-  right: 28px;
+  top: 20px;
+  right: 24px;
   font-family: 'Syne', sans-serif;
   font-weight: 800;
-  font-size: 5rem;
+  font-size: 4.5rem;
   line-height: 1;
   opacity: 0.08;
   z-index: 0;
@@ -484,51 +536,18 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 .service-card h3 {
   position: relative;
   z-index: 1;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: -0.5px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
-.service-card p {
+.service-card > p {
   position: relative;
   z-index: 1;
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.7;
   opacity: 0.85;
-}
-
-.service-price {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  margin-top: 20px;
-  padding: 10px 20px;
-  border-radius: 12px;
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-}
-
-.card-shuttle .service-price,
-.card-scooter .service-price {
-  background: rgba(255,255,255,0.15);
-}
-
-.card-car .service-price {
-  background: rgba(26,18,16,0.08);
-}
-
-.service-price .price-amount {
-  font-size: 1.5rem;
-  letter-spacing: -0.5px;
-}
-
-.service-price .price-unit {
-  font-size: 0.85rem;
-  font-weight: 500;
-  opacity: 0.8;
 }
 
 .service-features {
@@ -545,7 +564,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 500;
   opacity: 0.9;
 }
@@ -560,86 +579,20 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   flex-shrink: 0;
 }
 
-.card-shuttle .feature-check,
-.card-scooter .feature-check {
-  background: rgba(255,255,255,0.2);
-}
-
-.card-car .feature-check {
-  background: rgba(26,18,16,0.1);
-}
-
-.feature-check svg {
-  width: 11px;
-  height: 11px;
-}
-
-/* ─── STATS STRIP ─── */
-.stats {
-  background: var(--charcoal);
-  padding: 72px 48px;
-  position: relative;
-  overflow: hidden;
-}
-
-.stats::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(232,69,28,0.15) 0%, rgba(245,166,35,0.1) 50%, rgba(255,204,2,0.08) 100%);
-}
-
-.stats-grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.stat-item {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.stat-item.in-view {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.stat-number {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--coral), var(--sunflower));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -1px;
-}
-
-.stat-label {
-  color: rgba(255,248,242,0.5);
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-top: 6px;
-  letter-spacing: 0.5px;
-}
+.card-shuttle .feature-check, .card-scooter .feature-check { background: rgba(255,255,255,0.2); }
+.card-car .feature-check { background: rgba(26,18,16,0.1); }
+.feature-check svg { width: 11px; height: 11px; }
 
 /* ─── HOW IT WORKS ─── */
 .how-it-works {
-  background: var(--warm-white);
-  padding: 110px 48px;
-  position: relative;
+  background: var(--warm-cream);
+  padding: 100px 48px;
 }
 
 .how-header {
   text-align: center;
   max-width: 600px;
-  margin: 0 auto 72px;
+  margin: 0 auto 64px;
 }
 
 .how-header h2 {
@@ -712,7 +665,6 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--charcoal);
-  letter-spacing: -0.3px;
   margin-bottom: 8px;
 }
 
@@ -726,8 +678,8 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 
 /* ─── WHY US ─── */
 .why-us {
-  background: var(--warm-cream);
-  padding: 110px 48px;
+  background: var(--warm-white);
+  padding: 100px 48px;
   position: relative;
   overflow: hidden;
 }
@@ -740,7 +692,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,107,74,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,107,74,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -761,10 +713,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   line-height: 1.1;
 }
 
-.why-left h2 em {
-  font-style: italic;
-  color: var(--flame);
-}
+.why-left h2 em { font-style: italic; color: var(--flame); }
 
 .why-left p {
   color: #7A6B62;
@@ -781,7 +730,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 }
 
 .why-feature {
-  background: var(--warm-white);
+  background: var(--warm-cream);
   border-radius: 20px;
   padding: 28px 24px;
   border: 1px solid rgba(26,18,16,0.06);
@@ -813,17 +762,12 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   margin-bottom: 16px;
 }
 
-.why-feature-icon svg {
-  width: 22px;
-  height: 22px;
-  fill: var(--warm-white);
-}
+.why-feature-icon svg { width: 22px; height: 22px; fill: var(--warm-white); }
 
 .why-feature h4 {
   font-size: 1rem;
   font-weight: 700;
   color: var(--charcoal);
-  letter-spacing: -0.3px;
   margin-bottom: 6px;
 }
 
@@ -833,9 +777,9 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   line-height: 1.55;
 }
 
-/* ─── CTA SECTION ─── */
+/* ─── CTA ─── */
 .cta-section {
-  padding: 120px 48px;
+  padding: 110px 48px;
   background: linear-gradient(160deg, #B82E10 0%, #E8451C 40%, #FF6B4A 70%, #F5A623 100%);
   text-align: center;
   position: relative;
@@ -887,7 +831,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 18px 44px;
+  padding: 18px 40px;
   background: var(--warm-white);
   color: var(--flame);
   font-family: 'Syne', sans-serif;
@@ -911,14 +855,12 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   color: white;
 }
 
-.cta-btn-whatsapp:hover {
-  background: #20BD5A;
-}
+.cta-btn-whatsapp:hover { background: #20BD5A; }
 
 /* ─── FOOTER ─── */
 .footer {
   background: var(--charcoal);
-  padding: 60px 48px 40px;
+  padding: 56px 48px 36px;
 }
 
 .footer-inner {
@@ -931,9 +873,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   gap: 40px;
 }
 
-.footer-brand {
-  max-width: 340px;
-}
+.footer-brand { max-width: 340px; }
 
 .footer-logo {
   font-family: 'Syne', sans-serif;
@@ -943,10 +883,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   margin-bottom: 12px;
 }
 
-.footer-logo em {
-  font-style: normal;
-  color: var(--sunflower);
-}
+.footer-logo em { font-style: normal; color: var(--sunflower); }
 
 .footer-logo span {
   display: inline-block;
@@ -1007,8 +944,8 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 
 .footer-bar {
   max-width: 1200px;
-  margin: 40px auto 0;
-  padding-top: 24px;
+  margin: 36px auto 0;
+  padding-top: 20px;
   border-top: 1px solid rgba(255,248,242,0.07);
   display: flex;
   justify-content: space-between;
@@ -1054,9 +991,9 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
+  .top-cards { grid-template-columns: 1fr; max-width: 420px; gap: 16px; }
   .services-grid { grid-template-columns: 1fr; max-width: 520px; }
   .why-grid { grid-template-columns: 1fr; gap: 48px; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
   .steps-grid { grid-template-columns: 1fr; gap: 40px; max-width: 360px; }
   .steps-grid::before { display: none; }
 }
@@ -1065,9 +1002,9 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   .nav { padding: 16px 24px; }
   .nav.scrolled { padding: 12px 24px; }
   .nav-links { display: none; }
-  .hero-content { padding: 120px 24px 140px; }
-  .hero h1 { letter-spacing: -1.5px; }
-  .services { padding: 80px 24px 100px; }
+  .nav-toggle { display: flex; }
+  .hero { padding: 110px 24px 60px; }
+  .services { padding: 80px 24px; }
   .how-it-works { padding: 80px 24px; }
   .why-us { padding: 80px 24px; }
   .why-features { grid-template-columns: 1fr; }
@@ -1079,31 +1016,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 }
 
 @media (max-width: 480px) {
-  .hero h1 { font-size: 2.8rem; letter-spacing: -1px; }
-  .hero-ctas { flex-direction: column; }
-  .stats-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-  .stat-number { font-size: 2.2rem; }
-}
-
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 4px;
-  z-index: 101;
-}
-
-.nav-toggle span {
-  width: 24px;
-  height: 2px;
-  background: var(--warm-white);
-  border-radius: 2px;
-  transition: all 0.3s;
-}
-
-@media (max-width: 768px) {
-  .nav-toggle { display: flex; }
+  .hero h1 { font-size: 2.4rem; letter-spacing: -1px; }
 }
 </style>
 </head>
@@ -1125,142 +1038,130 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO WITH 3 COLUMNS -->
 <section class="hero">
   <div class="hero-shapes">
     <div class="float-shape"></div>
     <div class="float-shape"></div>
-    <div class="float-shape"></div>
   </div>
-  <div class="hero-content">
+
+  <div class="hero-top">
     <div class="hero-tag">
       <span class="hero-tag-dot"></span>
       Your adventure in Tonga starts here
     </div>
     <h1>Explore Tonga.<br>Your way, <em>every day.</em></h1>
-    <p class="hero-sub">Airport transfers, car rentals, and scooters in Nuku'alofa. Everything you need to move freely across the beautiful Kingdom of Tonga.</p>
-    <div class="hero-ctas">
-      <a href="#services" class="hero-cta">
-        Explore services
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </a>
-      <a href="https://wa.me/6768626339" class="hero-cta hero-cta-secondary" target="_blank">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-        WhatsApp us
-      </a>
+    <p class="hero-sub">Airport transfers, car rentals, and scooters in Nuku'alofa. Everything you need to move freely across the Kingdom of Tonga.</p>
+  </div>
+
+  <!-- THREE COLUMNS AT THE TOP -->
+  <div class="top-cards">
+    <!-- 1. Shared Airport Transfer -->
+    <div class="top-card">
+      <div class="top-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+      </div>
+      <h3>Shared Airport Transfer</h3>
+      <p class="top-card-desc">Comfortable transfers between Fua'amotu Airport and Nuku'alofa</p>
+      <div class="top-card-price">
+        <span class="price-big">TOP 50</span>
+        <span class="price-slash">/</span>
+        <span class="price-alt">USD 20</span>
+      </div>
+      <p class="top-card-detail">Per person, luggage included</p>
     </div>
+
+    <!-- 2. Car Rental -->
+    <div class="top-card">
+      <div class="top-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+      </div>
+      <h3>Car Rental</h3>
+      <p class="top-card-desc">Pick up at the airport or in Nuku'alofa. Explore Tongatapu at your pace.</p>
+      <div class="top-card-price">
+        <span class="price-big">TOP 80</span>
+        <span class="price-slash">/</span>
+        <span class="price-alt">USD 35</span>
+      </div>
+      <p class="top-card-detail">Per day, insurance included</p>
+    </div>
+
+    <!-- 3. Scooter Rental -->
+    <div class="top-card">
+      <div class="top-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 11h-1.2c-.4-1.2-1.5-2-2.8-2h-2V7h2V5h-4v6H9.9C9.4 9.8 8.3 9 7 9c-1.7 0-3 1.3-3 3s1.3 3 3 3c1.3 0 2.4-.8 2.9-2h4.2c.5 1.2 1.6 2 2.9 2 1.7 0 3-1.3 3-3h2v-2h-3zM7 13c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm10 0c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z"/></svg>
+      </div>
+      <h3>Scooter Rental</h3>
+      <p class="top-card-desc">Zip through Nuku'alofa. 49CC, easy to ride, helmet provided free.</p>
+      <div class="top-card-price">
+        <span class="price-big">TOP 50</span>
+        <span class="price-slash">/</span>
+        <span class="price-alt">USD 20</span>
+      </div>
+      <p class="top-card-detail">Per day, 24 hours</p>
+    </div>
+  </div>
+
+  <div class="hero-wa">
+    <a href="https://wa.me/6768626339" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+      Book on WhatsApp
+    </a>
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICE DETAILS -->
 <section class="services" id="services">
   <div class="services-header">
-    <div class="section-tag">Our Services</div>
-    <h2>Three ways to explore the Kingdom</h2>
-    <p>Whether you're arriving at Fua'amotu Airport, cruising the island, or zipping through Nuku'alofa — we've got you covered.</p>
+    <div class="section-tag">Service Details</div>
+    <h2>Everything you need to know</h2>
+    <p>Transparent pricing, no hidden fees. Here's what each service includes.</p>
   </div>
 
   <div class="services-grid">
-    <!-- Airport Transfer -->
     <div class="service-card card-shuttle">
       <span class="service-number">01</span>
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
       </div>
-      <h3>Airport Transfer</h3>
-      <p>Comfortable, reliable transfers between Fua'amotu International Airport and Nuku'alofa. No stress, no hidden costs — just smooth arrivals and departures.</p>
-      <div class="service-price">
-        <span class="price-amount">US $20</span>
-        <span class="price-unit">per person</span>
-      </div>
+      <h3>Shared Airport Transfer</h3>
+      <p>Reliable, comfortable shared transfers between Fua'amotu International Airport and Nuku'alofa. Fixed price, no surprises.</p>
       <ul class="service-features">
-        <li>
-          <span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Door-to-door service
-        </li>
-        <li>
-          <span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Fixed rate, luggage included
-        </li>
-        <li>
-          <span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Flight tracking
-        </li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>TOP 50 / USD 20 per person</li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Luggage included</li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Flight tracking</li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Door-to-door service</li>
       </ul>
     </div>
 
-    <!-- Car Rental -->
     <div class="service-card card-car">
       <span class="service-number">02</span>
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
       </div>
       <h3>Car Rental</h3>
-      <p>Hit the road on your terms. Explore Tongatapu island at your own pace — from compact city cars to spacious vehicles for families and groups.</p>
+      <p>Explore Tongatapu island at your own pace. Pick up at the airport or in Nuku'alofa — your choice.</p>
       <ul class="service-features">
-        <li>
-          <span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Daily & weekly rates
-        </li>
-        <li>
-          <span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Flexible pickup & drop-off
-        </li>
-        <li>
-          <span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Insurance included
-        </li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>TOP 80 / USD 35 per day</li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Airport or city pickup</li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Insurance included</li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Flexible drop-off</li>
       </ul>
     </div>
 
-    <!-- Scooter Rental -->
     <div class="service-card card-scooter">
       <span class="service-number">03</span>
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><path d="M19 11h-1.2c-.4-1.2-1.5-2-2.8-2h-2V7h2V5h-4v6H9.9C9.4 9.8 8.3 9 7 9c-1.7 0-3 1.3-3 3s1.3 3 3 3c1.3 0 2.4-.8 2.9-2h4.2c.5 1.2 1.6 2 2.9 2 1.7 0 3-1.3 3-3h2v-2h-3zM7 13c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm10 0c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z"/></svg>
       </div>
       <h3>Scooter Rental</h3>
-      <p>Zip through Nuku'alofa with ease. Perfect for quick trips, sightseeing, or just feeling the island breeze. 49CC, petrol, easy to ride.</p>
-      <div class="service-price">
-        <span class="price-amount">50 TOP</span>
-        <span class="price-unit">per day</span>
-      </div>
+      <p>Zip through Nuku'alofa with ease. 49CC petrol scooter, perfect for sightseeing and quick trips around the island.</p>
       <ul class="service-features">
-        <li>
-          <span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Helmet provided free
-        </li>
-        <li>
-          <span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Walk-in or reserve online
-        </li>
-        <li>
-          <span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Valid ID required
-        </li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>TOP 50 / USD 20 per day</li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Helmet provided free</li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Walk-in or reserve online</li>
+        <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Valid ID required</li>
       </ul>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats">
-  <div class="stats-grid">
-    <div class="stat-item">
-      <div class="stat-number" data-count="5000" data-suffix="+">0</div>
-      <div class="stat-label">Happy Travelers</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number" data-count="20" data-suffix="USD">0</div>
-      <div class="stat-label">Airport Transfer</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number" data-count="50" data-suffix="TOP">0</div>
-      <div class="stat-label">Scooter Per Day</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number" data-count="99" data-suffix="%">0</div>
-      <div class="stat-label">Satisfaction Rate</div>
     </div>
   </div>
 </section>
@@ -1272,7 +1173,6 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
     <h2>Getting around Tonga is easy</h2>
     <p>Three simple steps to get on the road.</p>
   </div>
-
   <div class="steps-grid">
     <div class="step">
       <div class="step-number">1</div>
@@ -1317,7 +1217,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
       </div>
       <div class="why-feature">
         <div class="why-feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM19 12h2c0-4.97-4.03-9-9-9v2c3.87 0 7 3.13 7 7zm-4 0h2c0-2.76-2.24-5-5-5v2c1.66 0 3 1.34 3 3z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
         </div>
         <h4>WhatsApp Booking</h4>
         <p>Message us anytime on WhatsApp. Quick replies, easy booking.</p>
@@ -1388,7 +1288,6 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
     <p>&copy; 2025 GoTonga. All rights reserved.</p>
     <div class="footer-socials">
       <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2"/></svg></a>
       <a href="https://wa.me/6768626339" aria-label="WhatsApp" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg></a>
     </div>
   </div>
@@ -1406,46 +1305,8 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.service-card').forEach((el, i) => { el.dataset.delay = i * 150; observer.observe(el); });
-document.querySelectorAll('.stat-item').forEach((el, i) => { el.dataset.delay = i * 100; observer.observe(el); });
 document.querySelectorAll('.why-feature').forEach((el, i) => { el.dataset.delay = i * 120; observer.observe(el); });
 document.querySelectorAll('.step').forEach((el, i) => { el.dataset.delay = i * 200; observer.observe(el); });
-
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      const target = parseInt(el.dataset.count);
-      const suffix = el.dataset.suffix || '';
-      const duration = 2000;
-      const startTime = performance.now();
-
-      function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.round(eased * target);
-
-        if (suffix === '+') {
-          el.textContent = current >= 1000 ? (current / 1000).toFixed(current >= target ? 0 : 1) + 'K+' : current + '+';
-        } else if (suffix === '%') {
-          el.textContent = current + '%';
-        } else if (suffix === 'USD') {
-          el.textContent = '$' + current;
-        } else if (suffix === 'TOP') {
-          el.textContent = current + ' T$';
-        } else {
-          el.textContent = current;
-        }
-
-        if (progress < 1) requestAnimationFrame(update);
-      }
-      requestAnimationFrame(update);
-      counterObserver.unobserve(el);
-    }
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.stat-number[data-count]').forEach(el => counterObserver.observe(el));
 
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
