@@ -146,7 +146,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   justify-content: center;
   overflow: hidden;
   background: linear-gradient(135deg, #B82E10 0%, #E8451C 25%, #FF6B4A 50%, #F5A623 80%, #FFCC02 100%);
-  padding: 120px 48px 80px;
+  padding: 140px 48px 100px;
 }
 
 .hero::before {
@@ -616,13 +616,13 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 .service-price-highlight {
   position: relative;
   z-index: 1;
-  margin-top: 20px;
-  padding: 14px 20px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 16px;
+  margin-top: 24px;
+  padding: 18px 24px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 18px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 900;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   letter-spacing: 0.5px;
   text-align: center;
 }
@@ -633,10 +633,36 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 
 .service-price-highlight .sph-unit {
   display: block;
-  font-size: 0.8rem;
-  font-weight: 500;
-  opacity: 0.7;
-  margin-top: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.75;
+  margin-top: 6px;
+}
+
+.service-book-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 32px;
+  background: #FFFFFF;
+  color: var(--flame);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-car .service-book-btn {
+  background: var(--charcoal);
+  color: var(--sunflower);
+}
+
+.service-book-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
 /* ─── HOW IT WORKS ─── */
@@ -1085,7 +1111,6 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   <a href="#" class="nav-logo">Go<em>Tonga</em><span></span></a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
-    <li><a href="#how">How It Works</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -1103,73 +1128,6 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 
   <div class="hero-top">
     <h1>GoTonga —<br><em>Tonga starts here !</em></h1>
-  </div>
-
-  <!-- THREE COLUMNS AT THE TOP -->
-  <div class="top-cards">
-    <!-- 1. Shared Airport Transfer -->
-    <div class="top-card">
-      <div class="top-card-icon">
-        <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
-      </div>
-      <h3>Shared Airport Transfer</h3>
-      <p class="top-card-desc">Comfortable transfers between Fua'amotu Airport and Nuku'alofa</p>
-      <div class="top-card-price">
-        <span class="price-big">TOP 50</span>
-        <span class="price-slash">/</span>
-        <span class="price-alt">USD 20</span>
-      </div>
-      <p class="top-card-detail">Per person, luggage included</p>
-      <a href="#" class="top-card-btn">Book Now</a>
-    </div>
-
-    <!-- 2. Car Rental -->
-    <div class="top-card">
-      <div class="top-card-icon">
-        <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
-      </div>
-      <h3>Car Rental</h3>
-      <p class="top-card-desc">Pick up at the airport or in Nuku'alofa. Explore Tongatapu at your pace.</p>
-      <div class="top-card-price">
-        <span class="price-big">TOP 80</span>
-        <span class="price-slash">/</span>
-        <span class="price-alt">USD 35</span>
-      </div>
-      <p class="top-card-detail">Per day, insurance included</p>
-      <a href="#" class="top-card-btn">Book Now</a>
-    </div>
-
-    <!-- 3. Scooter Rental -->
-    <div class="top-card">
-      <div class="top-card-icon">
-        <svg viewBox="0 0 24 24"><path d="M19 11h-1.2c-.4-1.2-1.5-2-2.8-2h-2V7h2V5h-4v6H9.9C9.4 9.8 8.3 9 7 9c-1.7 0-3 1.3-3 3s1.3 3 3 3c1.3 0 2.4-.8 2.9-2h4.2c.5 1.2 1.6 2 2.9 2 1.7 0 3-1.3 3-3h2v-2h-3zM7 13c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm10 0c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z"/></svg>
-      </div>
-      <h3>Scooter Rental</h3>
-      <p class="top-card-desc">Zip through Nuku'alofa. 49CC, easy to ride, helmet provided free.</p>
-      <div class="top-card-price">
-        <span class="price-big">TOP 50</span>
-        <span class="price-slash">/</span>
-        <span class="price-alt">USD 20</span>
-      </div>
-      <p class="top-card-detail">Per day, 24 hours</p>
-      <a href="#" class="top-card-btn">Book Now</a>
-    </div>
-
-    <!-- 4. Accommodation -->
-    <div class="top-card">
-      <div class="top-card-icon">
-        <svg viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>
-      </div>
-      <h3>KentiGate Villa</h3>
-      <p class="top-card-desc">Amazing rooms in Nuku'alofa. Comfortable, clean, and welcoming.</p>
-      <div class="top-card-price">
-        <span class="price-big">TOP 130</span>
-        <span class="price-slash">/</span>
-        <span class="price-alt">USD 54</span>
-      </div>
-      <p class="top-card-detail">Per night</p>
-      <a href="#" class="top-card-btn">Book Now</a>
-    </div>
   </div>
 
   <div class="hero-wa">
@@ -1202,6 +1160,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
         <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Flight tracking</li>
         <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Door-to-door service</li>
       </ul>
+      <a href="#" class="service-book-btn">Book Now</a>
     </div>
 
     <div class="service-card card-car">
@@ -1217,6 +1176,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
         <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Insurance included</li>
         <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Flexible drop-off</li>
       </ul>
+      <a href="#" class="service-book-btn">Book Now</a>
     </div>
 
     <div class="service-card card-scooter">
@@ -1232,6 +1192,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
         <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Walk-in or reserve online</li>
         <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Valid ID required</li>
       </ul>
+      <a href="#" class="service-book-btn">Book Now</a>
     </div>
 
     <div class="service-card card-villa">
@@ -1247,35 +1208,11 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
         <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Clean & comfortable</li>
         <li><span class="feature-check"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Book via WhatsApp</li>
       </ul>
+      <a href="#" class="service-book-btn">Book Now</a>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="how-it-works" id="how">
-  <div class="how-header">
-    <div class="section-tag">How It Works</div>
-    <h2>Getting around Tonga is easy</h2>
-    <p>Three simple steps to get on the road.</p>
-  </div>
-  <div class="steps-grid">
-    <div class="step">
-      <div class="step-number">1</div>
-      <h4>Get in Touch</h4>
-      <p>Send us a WhatsApp message or reserve online. Tell us what you need and when.</p>
-    </div>
-    <div class="step">
-      <div class="step-number">2</div>
-      <h4>We Confirm</h4>
-      <p>We'll confirm your booking and arrange pickup details. No hidden fees, ever.</p>
-    </div>
-    <div class="step">
-      <div class="step-number">3</div>
-      <h4>Enjoy the Ride</h4>
-      <p>We pick you up, hand you the keys, or deliver your scooter. Simple as that.</p>
-    </div>
-  </div>
-</section>
 
 <!-- WHY US -->
 <section class="why-us" id="why">
