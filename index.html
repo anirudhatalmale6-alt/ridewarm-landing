@@ -146,7 +146,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   justify-content: center;
   overflow: hidden;
   background: linear-gradient(135deg, #B82E10 0%, #E8451C 25%, #FF6B4A 50%, #F5A623 80%, #FFCC02 100%);
-  padding: 140px 48px 100px;
+  padding: 100px 48px 60px;
 }
 
 .hero::before {
@@ -468,6 +468,15 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   margin-top: 16px;
 }
 
+.services-tagline {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  letter-spacing: -0.3px;
+  margin-top: 0;
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -485,6 +494,8 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   opacity: 0;
   transform: translateY(50px);
+  display: flex;
+  flex-direction: column;
 }
 
 .service-card.in-view {
@@ -578,6 +589,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
   font-size: 0.95rem;
   line-height: 1.7;
   opacity: 0.85;
+  flex: 1;
 }
 
 .service-features {
@@ -1125,20 +1137,12 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
     <div class="float-shape"></div>
   </div>
 
-  <div class="hero-wa">
-    <a href="https://wa.me/6768626339" target="_blank">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-      Book on WhatsApp
-    </a>
-  </div>
 </section>
 
 <!-- SERVICE DETAILS -->
 <section class="services" id="services">
   <div class="services-header">
-    <div class="section-tag">Service Details</div>
-    <h2>Everything you need to know</h2>
-    <p>Transparent pricing, no hidden fees. Here's what each service includes.</p>
+    <p class="services-tagline">Transparent pricing, no hidden fees. Here's what each service includes.</p>
   </div>
 
   <div class="services-grid">
